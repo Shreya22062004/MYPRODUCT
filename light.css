@@ -866,3 +866,34 @@ section,
     gap: 0.2rem !important;
   }
 }
+
+/* Responsive padding for feature cards on tablets and mobiles */
+@media (max-width: 1000px) {
+  .feature-card {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .feature-card {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .feature-card {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    max-width: 95vw;
+  }
+}
