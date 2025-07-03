@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment - MyProduct</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link id="theme-link" rel="stylesheet" href="light.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { display: flex; align-items: center; justify-content: center; height: 100vh; background: var(--bg); color: var(--text);}
+    .payment-box {
+      background: var(--card-bg, #fff);
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 28px rgba(61,90,254,0.08);
+      text-align: center;
+      max-width: 350px;
+      width: 95vw;
+    }
+    .payment-box h2 { color: var(--primary);}
+    .payment-success { color: var(--accent); font-weight: bold; margin-top: 1.5rem;}
+    .pay-btn {
+      margin-top: 1.5rem;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.8em 2em;
+      border: none;
+      border-radius: 24px;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .pay-btn:hover { background: var(--accent); color: var(--primary-dark);}
+  </style>
+</head>
+<body>
+  <div class="payment-box">
+    <h2>Complete Your Payment</h2>
+    <div id="planDetails"></div>
+    <button class="pay-btn" id="payBtn">Pay Now</button>
+    <div class="payment-success" id="paymentSuccess" style="display:none;">
+      <i class="fa fa-check-circle"></i> Payment Successful!<br>
+      Thank you for your purchase.
+    </div>
+  </div>
+  <script>
+    // Parse plan/price from URL
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get('plan') || 'Pro';
+    const price = params.get('price') || '19';
+    document.getElementById('planDetails').innerHTML =
+      `<strong>Plan:</strong> ${plan}<br><strong>Price:</strong> ${price === '0' ? 'Free' : '$' + price + '/mo'}`;
+
+    // Simulate payment
+    document.getElementById('payBtn').addEventListener('click', function() {
+      this.style.display = 'none';
+      document.getElementById('paymentSuccess').style.display = 'block';
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
